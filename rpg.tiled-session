@@ -1,0 +1,36 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "world.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "TileSet.tsx": {
+            "scaleInDock": 1.4511,
+            "scaleInEditor": 1
+        },
+        "world.tmx": {
+            "scale": 0.0867,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -3990.7727797001153,
+                "y": -351.78777393310247
+            }
+        }
+    },
+    "last.imagePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "world.tmx",
+        "TileSet.tsx"
+    ],
+    "project": "rpg.tiled-project",
+    "recentFiles": [
+        "TileSet.tsx",
+        "world.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
