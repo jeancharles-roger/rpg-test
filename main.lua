@@ -26,8 +26,8 @@ function love.load()
         sprite = sprite,
         x = player.x,
         y = player.y,
-        ox = -8,
-        oy = -8
+        ox = 16,
+        oy = 16
     }
 
     layer.update = function(self, dt)
@@ -69,8 +69,8 @@ function love.load()
 
 		-- Temporarily draw a point at our location so we know
 		-- that our sprite is offset properly
-		love.graphics.setPointSize(5)
-		love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
+		--love.graphics.setPointSize(5)
+		--love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 	end
 
 
@@ -79,7 +79,6 @@ end
 
 function love.update(dt)
     map:update(dt)
-
 end
 
 function love.draw()
