@@ -7,21 +7,47 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx": {
+            "scale": 0.34,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1279.4117647058822,
+                "y": 382.3529411764706
+            }
+        },
+        "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx#Flag": {
+            "scaleInDock": 1
+        },
+        "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx#platformer": {
+            "scaleInDock": 1
+        },
         "TileSet.tsx": {
-            "scaleInDock": 1.4511,
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "world.tmx": {
-            "scale": 0.0867,
+            "scale": 1.0316,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -3990.7727797001153,
-                "y": -351.78777393310247
+                "x": 543.8154323381156,
+                "y": 370.29856533540135
             }
+        },
+        "world.tmx#Terrain": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         }
     },
-    "last.imagePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg",
+    "last.exportedFilePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
+    "last.externalTilesetPath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
+    "last.imagePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
+    "lastUsedTilesetExportFilter": "Fichiers Lua (*.lua)",
     "map.fixedSize": false,
+    "map.lastUsedExportFilter": "Fichiers Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "world.tmx",
@@ -29,8 +55,11 @@
     ],
     "project": "rpg.tiled-project",
     "recentFiles": [
-        "TileSet.tsx",
-        "world.tmx"
+        "world.tmx",
+        "TileSet.tsx"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 0
 }
