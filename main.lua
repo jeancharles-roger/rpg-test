@@ -1,13 +1,19 @@
+local bump = require "libraries.bump"
 local sti = require "libraries.sti"
+local bump_sti = require "libraries.sti.plugins.bump"
 
+local world
 local map
 local layer 
 local player
 
 function love.load()
-
+	
+	world = bump.newWorld()
+	
     -- chargement de la carte
-    map = sti("world.lua")
+    map = sti("world.lua", {"bump"})
+	map:bump_init(world)
 
     -- Création d'une couche dynamique à partir de l'id 2
     layer = map:addCustomLayer("Sprites", 2)
@@ -53,6 +59,9 @@ function love.load()
 		if love.keyboard.isDown("d", "right") then
 			self.player.x = self.player.x + speed
 		end
+
+		self.player.x, self.player.y, cols = world:move( player, self.player.x, self.player.y )
+
 	end
 
     layer.draw = function(self)
@@ -73,6 +82,7 @@ function love.load()
 		--love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 	end
 
+	world:add(player, player.x, player.y, 16, 16)
 
     map:removeLayer("Joueurs")
 end

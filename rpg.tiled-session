@@ -11,14 +11,18 @@
             "scaleInDock": 1
         },
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
             "scale": 0.34,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1279.4117647058822,
-                "y": 382.3529411764706
+                "x": 1094.1176470588236,
+                "y": 101.47058823529403
             }
         },
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx#Flag": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx#platformer": {
@@ -30,11 +34,15 @@
             "scaleInEditor": 1
         },
         "world.tmx": {
-            "scale": 1.0316,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                2,
+                3
+            ],
+            "scale": 1.735,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 543.8154323381156,
-                "y": 370.29856533540135
+                "x": 839.7694524495678,
+                "y": -209.51008645533142
             }
         },
         "world.tmx#Terrain": {
@@ -50,12 +58,13 @@
     "map.lastUsedExportFilter": "Fichiers Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "world.tmx",
-        "TileSet.tsx"
+        "world.tmx"
     ],
     "project": "rpg.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
         "world.tmx",
+        "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx",
         "TileSet.tsx"
     ],
     "tileset.embedInMap": true,
