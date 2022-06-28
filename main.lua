@@ -27,7 +27,7 @@ function love.load()
 	end
 
     -- Objet du joueur
-    local sprite = love.graphics.newImage("pixmaps/Archer-Green.png")
+    local sprite = love.graphics.newImage("pixmaps/Test.png")
     layer.player = {
         sprite = sprite,
         x = player.x,

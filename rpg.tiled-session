@@ -6,6 +6,7 @@
     "activeFile": "world.tmx",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
         "": {
             "scaleInDock": 1
@@ -38,21 +39,50 @@
                 2,
                 3
             ],
-            "scale": 1.735,
-            "selectedLayer": 2,
+            "scale": 0.6824,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 839.7694524495678,
-                "y": -209.51008645533142
+                "x": 448.41735052754984,
+                "y": -6.594372801875693
             }
+        },
+        "world.tmx#Characters": {
+            "dynamicWrapping": false,
+            "scaleInDock": 3.4131
+        },
+        "world.tmx#Cottage": {
+            "dynamicWrapping": false
+        },
+        "world.tmx#Heroes_01": {
+            "dynamicWrapping": false
+        },
+        "world.tmx#Main": {
+            "dynamicWrapping": false
         },
         "world.tmx#Terrain": {
             "dynamicWrapping": true,
             "scaleInDock": 1
+        },
+        "world.tmx#Whitebeard": {
+            "dynamicWrapping": false
+        },
+        "world.tmx#cottage": {
+            "dynamicWrapping": false
+        },
+        "world.tmx#sheet_winnersa_1": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "world.tmx#sheet_winnersa_2": {
+            "dynamicWrapping": false
+        },
+        "world.tmx#sheet_winnersa_3": {
+            "dynamicWrapping": false
         }
     },
     "last.exportedFilePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
     "last.externalTilesetPath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
-    "last.imagePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
+    "last.imagePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test/pixmaps",
     "lastUsedTilesetExportFilter": "Fichiers Lua (*.lua)",
     "map.fixedSize": false,
     "map.lastUsedExportFilter": "Fichiers Lua (*.lua)",
@@ -70,5 +100,11 @@
     "tileset.embedInMap": true,
     "tileset.lastUsedFilter": "Fichiers de jeu de tuiles Tiled (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 2,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 36,
+        "width": 20
+    },
     "tileset.type": 0
 }
