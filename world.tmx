@@ -8912,7 +8912,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Limites">
+ <objectgroup id="3" name="Limites" visible="0">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
