@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 10,
-  nextobjectid = 63,
+  nextobjectid = 66,
   properties = {},
   tilesets = {
     {
@@ -10494,7 +10494,7 @@ return {
       id = 3,
       name = "Limites",
       class = "",
-      visible = true,
+      visible = false,
       opacity = 1,
       offsetx = 0,
       offsety = 0,
@@ -10682,6 +10682,45 @@ return {
           y = -308.067,
           width = 181.738,
           height = 15.5142,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 63,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 841.138,
+          y = -302.212,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 64,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 837.69,
+          y = -303.936,
+          width = 16.6619,
+          height = 199.368,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 65,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 831.945,
+          y = -113.186,
+          width = 0,
+          height = 0,
           rotation = 0,
           visible = true,
           properties = {}
