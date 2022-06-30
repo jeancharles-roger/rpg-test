@@ -37064,7 +37064,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="3" name="Limites" visible="0">
+ <objectgroup id="3" name="Limites">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
@@ -37080,8 +37080,8 @@
   <object id="28" x="-61.6715" y="-253.026" width="25.9366" height="27.6657"/>
   <object id="29" x="-92.7954" y="-189.049" width="25.3602" height="27.0893"/>
   <object id="47" x="144.06" y="-3987.15" width="257.092" height="454.344"/>
-  <object id="51" x="642.73" y="-314.716" width="24.3794" height="214.982"/>
-  <object id="52" x="669.326" y="-308.067" width="181.738" height="15.5142"/>
+  <object id="51" x="647.182" y="-314.716" width="24.3794" height="214.982"/>
+  <object id="52" x="668.881" y="-314.299" width="181.738" height="15.5142"/>
   <object id="66" x="1058.66" y="-181.892" width="26.5686" height="18.3936"/>
   <object id="67" x="288.167" y="-768.445" width="32.6998" height="32.6998"/>
   <object id="68" x="1052.52" y="-190.067" width="30.656" height="28.6123"/>
