@@ -9,6 +9,17 @@ local layer
 local player
 
 local sqrtOf2 = 1.4142135624
+local characterGridPositions = {
+	{ "1-3", 1 },
+	{ "4-6", 1 },
+	{ "7-9", 1 },
+	{ "10-12", 1 },
+	{ "1-3", 5 },
+	{ "4-6", 5 },
+	{ "7-9", 5 },
+	{ "10-12", 5 },
+}
+
 
 function love.load()
 	
@@ -22,32 +33,37 @@ function love.load()
     layer = map:addCustomLayer("Sprites", 2)
 
     -- Spawn du joueur
+	local spawn
 	for k, object in pairs(map.objects) do
 		if object.name == "Joueur" then
-			player = object
+			spawn = object
 			break
 		end
 	end
 
     -- Objet du joueur
-    local sprite = love.graphics.newImage("pixmaps/character1.png")
-	local grid = anim8.newGrid(16, 16, sprite:getWidth(), sprite:getHeight())
+	local character = 4
+    local sprite = love.graphics.newImage("pixmaps/Characters.png")
+	local grid = anim8.newGrid(26, 36, sprite:getWidth(), sprite:getHeight())
 	local animations = {
-		anim8.newAnimation(grid(1, "1-3"), 0.1),
-		anim8.newAnimation(grid(2, "1-3"), 0.1),
-		anim8.newAnimation(grid(3, "1-3"), 0.1),
-		anim8.newAnimation(grid(4, "1-3"), 0.1),
+		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 1), 0.1),
+		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 0), 0.1),
+		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 3), 0.1),
+		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 2), 0.1),
 	}
 
-    layer.player = {
+    player = {
+		character = character,
         sprite = sprite,
+		grid = grid,
 		animations = animations,
 		direction = 1,
-		x = player.x,
-        y = player.y,
+		x = spawn.x,
+        y = spawn.y,
         ox = 16,
         oy = 16
     }
+	layer.player = player
 
     layer.update = function(self, dt)
 		-- 96 pixels per second
@@ -132,6 +148,26 @@ function love.load()
 
     map:removeLayer("Joueurs")
 end
+
+function love.keypressed(key, scancode, isrepeat)
+	if key == "escape" then
+	   love.event.quit()
+	elseif key == "c" then
+		player.character = player.character + 1
+		if player.character > 8 then
+			player.character = 1
+		end	 
+		local grid = player.grid
+		local lines = characterGridPositions[player.character][1]
+		local column = characterGridPositions[player.character][2]
+		player.animations = {
+			anim8.newAnimation(grid(lines, column + 1), 0.1),
+			anim8.newAnimation(grid(lines, column + 0), 0.1),
+			anim8.newAnimation(grid(lines, column + 3), 0.1),
+			anim8.newAnimation(grid(lines, column + 2), 0.1),
+		}
+	end
+ end 
 
 function love.update(dt)
     map:update(dt)
