@@ -20,13 +20,24 @@ local characterGridPositions = {
 	{ "10-12", 5 },
 }
 
+function updateAnimations(player)
+	local grid = player.grid
+	local lines = characterGridPositions[player.character][1]
+	local column = characterGridPositions[player.character][2]
+	player.animations = {
+		anim8.newAnimation(grid(lines, column + 1), 0.1),
+		anim8.newAnimation(grid(lines, column + 0), 0.1),
+		anim8.newAnimation(grid(lines, column + 3), 0.1),
+		anim8.newAnimation(grid(lines, column + 2), 0.1),
+	}
+end
 
 function love.load()
 	
 	world = bump.newWorld()
 	
     -- chargement de la carte
-    map = sti("world.lua", {"bump"})
+    map = sti("carte.lua", {"bump"})
 	map:bump_init(world)
 
     -- Création d'une couche dynamique à partir de l'id 2
@@ -45,24 +56,19 @@ function love.load()
 	local character = 4
     local sprite = love.graphics.newImage("pixmaps/Characters.png")
 	local grid = anim8.newGrid(26, 36, sprite:getWidth(), sprite:getHeight())
-	local animations = {
-		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 1), 0.1),
-		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 0), 0.1),
-		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 3), 0.1),
-		anim8.newAnimation(grid(characterGridPositions[character][1], characterGridPositions[character][2] + 2), 0.1),
-	}
-
+	
     player = {
 		character = character,
         sprite = sprite,
 		grid = grid,
-		animations = animations,
 		direction = 1,
 		x = spawn.x,
         y = spawn.y,
         ox = 16,
         oy = 16
     }
+	updateAnimations(player)
+
 	layer.player = player
 
     layer.update = function(self, dt)
@@ -146,7 +152,10 @@ function love.load()
 
 	world:add(player, player.x, player.y, 16, 16)
 
-    map:removeLayer("Joueurs")
+    map:removeLayer("Placements")
+
+	local colliders = map.layers["Barrières"]
+	colliders.visible = false
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -157,15 +166,7 @@ function love.keypressed(key, scancode, isrepeat)
 		if player.character > 8 then
 			player.character = 1
 		end	 
-		local grid = player.grid
-		local lines = characterGridPositions[player.character][1]
-		local column = characterGridPositions[player.character][2]
-		player.animations = {
-			anim8.newAnimation(grid(lines, column + 1), 0.1),
-			anim8.newAnimation(grid(lines, column + 0), 0.1),
-			anim8.newAnimation(grid(lines, column + 3), 0.1),
-			anim8.newAnimation(grid(lines, column + 2), 0.1),
-		}
+		updateAnimations(player)
 	end
  end 
 
@@ -184,5 +185,5 @@ function love.draw()
 	local tx = math.floor(player.x - screen_width  / 2)
 	local ty = math.floor(player.y - screen_height / 2)
 
-    map:draw(-tx, -ty, scale)
+	map:draw(-tx, -ty, scale)
 end
