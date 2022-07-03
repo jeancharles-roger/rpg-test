@@ -74,8 +74,9 @@
             "dynamicWrapping": false
         },
         "world.tmx#Terrain": {
-            "dynamicWrapping": true,
-            "scaleInDock": 1
+            "dynamicWrapping": false,
+            "scaleInDock": 1.3858,
+            "scaleInEditor": 1
         },
         "world.tmx#Whitebeard": {
             "dynamicWrapping": false
