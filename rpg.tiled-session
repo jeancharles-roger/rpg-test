@@ -112,7 +112,6 @@
     "project": "rpg.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "carte.tmx",
         "world.tmx",
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx",
         "TileSet.tsx"
