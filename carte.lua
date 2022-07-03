@@ -9,8 +9,8 @@ return {
   height = 20,
   tilewidth = 32,
   tileheight = 32,
-  nextlayerid = 5,
-  nextobjectid = 3,
+  nextlayerid = 6,
+  nextobjectid = 8,
   properties = {},
   tilesets = {
     {
@@ -51,7 +51,7 @@ return {
       width = 30,
       height = 20,
       id = 1,
-      name = "Décors fond",
+      name = "Troisième Plan ",
       class = "",
       visible = true,
       opacity = 1,
@@ -155,7 +155,7 @@ return {
       width = 30,
       height = 20,
       id = 2,
-      name = "Décors devant",
+      name = "Second Plan",
       class = "",
       visible = true,
       opacity = 1,
@@ -166,6 +166,27 @@ return {
       properties = {},
       encoding = "lua",
       chunks = {
+        {
+          x = -16, y = -16, width = 16, height = 16,
+          data = {
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 92, 94, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 61, 93, 94, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 92, 62, 125, 125, 126, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 124, 125, 125, 125, 126, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 156, 157, 157, 157, 158, 0
+          }
+        },
         {
           x = 0, y = -16, width = 16, height = 16,
           data = {
@@ -209,6 +230,25 @@ return {
           }
         }
       }
+    },
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 30,
+      height = 20,
+      id = 5,
+      name = "Premier Plan",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      chunks = {}
     },
     {
       type = "objectgroup",
@@ -256,14 +296,53 @@ return {
       },
       objects = {
         {
-          id = 2,
+          id = 3,
           name = "",
           class = "",
           shape = "rectangle",
-          x = 101.49,
-          y = -39.3281,
-          width = 151.456,
-          height = 126.259,
+          x = 99.6906,
+          y = -40.3919,
+          width = 152.114,
+          height = 127.191,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = -149.536,
+          y = -151.255,
+          width = 48.9859,
+          height = 137.504,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = -100.55,
+          y = -117.738,
+          width = 57.5799,
+          height = 103.988,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = -176.177,
+          y = -88.5184,
+          width = 26.6415,
+          height = 75.6274,
           rotation = 0,
           visible = true,
           properties = {}

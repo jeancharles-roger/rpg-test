@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="5" nextobjectid="3">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="6" nextobjectid="8">
  <editorsettings>
   <export target="carte.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="terrain" tilewidth="32" tileheight="32" tilecount="1024" columns="32">
   <image source="pixmaps/terrain.png" width="1024" height="1024"/>
  </tileset>
- <layer id="1" name="Décors fond" width="30" height="20">
+ <layer id="1" name="Troisième Plan " width="30" height="20">
   <data encoding="csv">
    <chunk x="-16" y="-16" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -82,8 +82,26 @@
 </chunk>
   </data>
  </layer>
- <layer id="2" name="Décors devant" width="30" height="20">
+ <layer id="2" name="Second Plan" width="30" height="20">
   <data encoding="csv">
+   <chunk x="-16" y="-16" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,92,94,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,124,61,93,94,0,
+0,0,0,0,0,0,0,0,0,0,92,62,125,125,126,0,
+0,0,0,0,0,0,0,0,0,0,124,125,125,125,126,0,
+0,0,0,0,0,0,0,0,0,0,156,157,157,157,158,0
+</chunk>
    <chunk x="0" y="-16" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -122,6 +140,9 @@
 </chunk>
   </data>
  </layer>
+ <layer id="5" name="Premier Plan" width="30" height="20">
+  <data encoding="csv"/>
+ </layer>
  <objectgroup id="3" name="Placements">
   <object id="1" name="Joueur" x="-22.1314" y="8.53844" width="11.4903" height="11.2211"/>
  </objectgroup>
@@ -129,6 +150,9 @@
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
-  <object id="2" x="101.49" y="-39.3281" width="151.456" height="126.259"/>
+  <object id="3" x="99.6906" y="-40.3919" width="152.114" height="127.191"/>
+  <object id="5" x="-149.536" y="-151.255" width="48.9859" height="137.504"/>
+  <object id="6" x="-100.55" y="-117.738" width="57.5799" height="103.988"/>
+  <object id="7" x="-176.177" y="-88.5184" width="26.6415" height="75.6274"/>
  </objectgroup>
 </map>
