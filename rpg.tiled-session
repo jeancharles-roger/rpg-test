@@ -3,16 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "carte.tmx",
+    "activeFile": "",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
         "": {
             "scaleInDock": 1
-        },
-        "#terrain": {
-            "dynamicWrapping": false
         },
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx": {
             "expandedObjectLayers": [
@@ -38,26 +35,26 @@
             "scaleInEditor": 1
         },
         "carte.tmx": {
-            "scale": 0.2664,
-            "selectedLayer": 0,
+            "scale": 0.4087,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 90.09009009009014,
-                "y": 189.56456456456453
+                "x": -40.37191093711772,
+                "y": -642.280401272327
             }
         },
         "carte.tmx#terrain": {
-            "scaleInDock": 1
+            "scaleInDock": 1.2343
         },
         "world.tmx": {
             "expandedObjectLayers": [
                 2,
                 3
             ],
-            "scale": 0.02,
+            "scale": 0.63,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1350,
-                "y": -4975
+                "x": -2405.5555555555557,
+                "y": 456.3492063492064
             }
         },
         "world.tmx#Characters": {
@@ -75,7 +72,7 @@
         },
         "world.tmx#Terrain": {
             "dynamicWrapping": false,
-            "scaleInDock": 1.3858,
+            "scaleInDock": 0.6478,
             "scaleInEditor": 1
         },
         "world.tmx#Whitebeard": {
@@ -93,10 +90,6 @@
         },
         "world.tmx#sheet_winnersa_3": {
             "dynamicWrapping": false
-        },
-        "world.tmx#terrain2": {
-            "dynamicWrapping": false,
-            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "/Users/charlie/Documents/dev/minibilles/lua/love/rpg-test",
@@ -107,11 +100,11 @@
     "map.lastUsedExportFilter": "Fichiers Lua (*.lua)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "carte.tmx"
     ],
     "project": "rpg.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "carte.tmx",
         "world.tmx",
         "/Users/charlie/Documents/dev/minibilles/lua/love/udemy-love2d/Platformer/maps/level1.tmx",
         "TileSet.tsx"
