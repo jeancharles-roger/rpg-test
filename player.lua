@@ -1,7 +1,7 @@
 
 local anim8 = require 'libraries.anim8'
 
-local player
+require 'boomerang'
 
 local sqrtOf2 = 1.4142135624
 local characterGridPositions = {
@@ -34,22 +34,29 @@ function initializePlayer(world, layer, spawn)
     local sprite = love.graphics.newImage("pixmaps/Characters.png")
 	local grid = anim8.newGrid(26, 36, sprite:getWidth(), sprite:getHeight())
 	
-    player = {
-		character = character,
+    local player = {
+        character = character,
         sprite = sprite,
 		grid = grid,
 		direction = 1,
+		dx = 1,
+		dy = 0,
 		x = spawn.x,
         y = spawn.y,
+		speed = 150,
         ox = 8,
         oy = 16
     }
-
-	updatePlayerAnimations(player)
 	layer.player = player
+
+    updatePlayerAnimations(player)
+     
+    layer.boomerang = createBoomerang(world, player)
+
     layer.update = function(self, dt)
+		local player = self.player
 		-- 96 pixels per second
-		local speed = 150 * dt
+		local speed = player.speed * dt
 		local diagSpeed = speed / sqrtOf2
 
 		local up = love.keyboard.isDown("w", "up")
@@ -71,39 +78,57 @@ function initializePlayer(world, layer, spawn)
 
 		-- updates positions
 		if up and left then
-			self.player.x = self.player.x - diagSpeed
-			self.player.y = self.player.y - diagSpeed
-			self.player.direction = 1
+			player.x = player.x - diagSpeed
+			player.y = player.y - diagSpeed
+			player.direction = 1
+			player.dx = -1/sqrtOf2
+			player.dy = -1/sqrtOf2
 		elseif up and right then
-			self.player.x = self.player.x + diagSpeed
-			self.player.y = self.player.y - diagSpeed			
-			self.player.direction = 4
+			player.x = player.x + diagSpeed
+			player.y = player.y - diagSpeed			
+			player.direction = 4
+			player.dx = 1/sqrtOf2
+			player.dy = -1/sqrtOf2
 		elseif down and left then
-			self.player.x = self.player.x - diagSpeed
-			self.player.y = self.player.y + diagSpeed			
-			self.player.direction = 1
+			player.x = player.x - diagSpeed
+			player.y = player.y + diagSpeed			
+			player.direction = 1
+			player.dx = -1/sqrtOf2
+			player.dy = 1/sqrtOf2
 		elseif down and right then
-			self.player.x = self.player.x + diagSpeed
-			self.player.y = self.player.y + diagSpeed		
-			self.player.direction = 4
+			player.x = player.x + diagSpeed
+			player.y = player.y + diagSpeed		
+			player.direction = 4
+			player.dx = 1/sqrtOf2
+			player.dy = 1/sqrtOf2
 		elseif up then
-			self.player.y = self.player.y - speed
-			self.player.direction = 3
+			player.y = player.y - speed
+			player.direction = 3
+			player.dx = 0
+			player.dy = -1
 		elseif down then
-			self.player.y = self.player.y + speed
-			self.player.direction = 2
+			player.y = player.y + speed
+			player.direction = 2
+			player.dx = 0
+			player.dy = 1
 		elseif left then
-			self.player.x = self.player.x - speed
-			self.player.direction = 1
+			player.x = player.x - speed
+			player.direction = 1
+			player.dx = -1
+			player.dy = 0
 		elseif right then
-			self.player.x = self.player.x + speed
-			self.player.direction = 4
+			player.x = player.x + speed
+			player.direction = 4
+			player.dx = 1
+			player.dy = 0
 		end
 
-		self.player.x, self.player.y, cols = world:move( player, self.player.x, self.player.y )
+		player.x, player.y, cols = world:move(player, player.x, player.y )
+
+        updateBoomerang(self.boomerang, dt)
 
 		if moving then 
-			self.player.animations[self.player.direction]:update(dt)
+			player.animations[player.direction]:update(dt)
 		end
 	end
 
@@ -120,6 +145,8 @@ function initializePlayer(world, layer, spawn)
 			self.player.oy
 		)
 
+		displayBoomerang(self.boomerang)
+		
 		-- Temporarily draw a point at our location so we know
 		-- that our sprite is offset properly
 		--love.graphics.setPointSize(5)
@@ -127,6 +154,4 @@ function initializePlayer(world, layer, spawn)
 	end
 
 	world:add(player, player.x, player.y, 16, 16)
-
-
 end

@@ -3,11 +3,11 @@ local anim8 = require 'libraries.anim8'
 local sti = require "libraries.sti"
 local bump_sti = require "libraries.sti.plugins.bump"
 local player = require "player"
+local boomerang = require "boomerang"
 
 local world
 local map
 local layer 
-local boomerang
 
 function love.load()
 	
@@ -17,7 +17,7 @@ function love.load()
     map = sti("carte.lua", {"bump"})
 	map:bump_init(world)
 
-    -- Création d'une couche dynamique à partir de l'id 2
+    -- Création d'une couche dynamique à partir de l'id 3
     layer = map:addCustomLayer("Sprites", 3)
 
     -- Spawn du joueur
@@ -47,6 +47,8 @@ function love.keypressed(key, scancode, isrepeat)
 			player.character = 1
 		end	 
 		updatePlayerAnimations(player)
+	elseif key == "space" then
+		throwBoomerang(layer.boomerang)
 	end
  end 
 
