@@ -1,69 +1,81 @@
 local anim8 = require 'libraries.anim8'
 
-function throwBoomerang(self)
-    if self.thrown == nil then
-        self.thrown = {
+function throwBoomerang(boomerang)
+    if boomerang.thrown == nil then
+        boomerang.thrown = {
             time = 0,
-            dx = self.player.dx,
-            dy = self.player.dy,
+            dx = boomerang.player.dx,
+            dy = boomerang.player.dy,
             comming_back = false,
         }
     end
 end
 
-function displayBoomerang(self) 
-    local dx = math.abs(self.player.x + self.player.ox - self.x)
-    local dy = math.abs(self.player.y + self.player.oy - self.y)
-    if self.thrown ~= nil and (dx > 4 or dy > 4) then
-        self.animation:draw(
-            self.sprite, 
-            math.floor(self.x),
-            math.floor(self.y),
+function displayBoomerang(boomerang) 
+    local dx = math.abs(boomerang.player.x + boomerang.player.ox - boomerang.x)
+    local dy = math.abs(boomerang.player.y + boomerang.player.oy - boomerang.y)
+    if boomerang.thrown ~= nil and (dx > 4 or dy > 4) then
+        boomerang.animation:draw(
+            boomerang.sprite, 
+            boomerang.x,
+            boomerang.y,
             0,
             1,
             1,
-            self.player.ox,
-            self.player.oy
+            boomerang.player.ox,
+            boomerang.player.oy
         )
     end
 
 end
 
-function updateBoomerang(self, dt) 
-    self.animation:update(dt)
+function updateBoomerang(boomerang, world, dt) 
+    boomerang.animation:update(dt)
 
-
-    if self.thrown ~= nil then    
-        if self.thrown.comming_back then
-            local dx = self.player.x + self.player.ox - self.x
-            local dy = self.player.y + self.player.oy - self.y
+    if boomerang.thrown ~= nil then    
+        if boomerang.thrown.comming_back then
+            local dx = boomerang.player.x + boomerang.player.ox - boomerang.x
+            local dy = boomerang.player.y + boomerang.player.oy - boomerang.y
             if math.abs(dx) > 2 or math.abs(dy) > 2  then
                 -- fait revenir le boomerang
                 local norm = math.sqrt(dx*dx + dy*dy)   
                 
-                self.x = self.x + dx/norm * self.speed * dt
-                self.y = self.y + dy/norm * self.speed * dt
+                boomerang.x = boomerang.x + dx/norm * boomerang.speed * dt
+                boomerang.y = boomerang.y + dy/norm * boomerang.speed * dt
             else 
                 -- arrete le lancer
-                self.thrown = nil
+                boomerang.thrown = nil
             end
         else
             -- fait partir le boomerang
-            self.thrown.time = self.thrown.time + dt 
-            self.x = self.x + self.thrown.dx * self.speed * dt
-            self.y = self.y + self.thrown.dy * self.speed * dt
+            boomerang.thrown.time = boomerang.thrown.time + dt 
+            boomerang.x = boomerang.x + boomerang.thrown.dx * boomerang.speed * dt
+            boomerang.y = boomerang.y + boomerang.thrown.dy * boomerang.speed * dt
             
-            if self.thrown.time >= self.out_time then
+            if boomerang.thrown.time >= boomerang.out_time then
                 -- le boomerang doit revenir
-                self.thrown.comming_back = true
+                boomerang.thrown.comming_back = true
             end
         end
     else 
         -- place le boomerang sur le jouer si il n'est pas lancé
-        self.x = self.player.x + self.player.ox
-        self.y = self.player.y + self.player.oy
+        boomerang.x = boomerang.player.x + boomerang.player.ox
+        boomerang.y = boomerang.player.y + boomerang.player.oy
     end
         
+    local function filter(item, other)
+        if other == boomerang.player then
+            return false
+        else 
+            return "slide"
+        end
+    end
+    boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
+    -- il y a une collision, le boomerang doit revenir
+    if #collisions > 0 and boomerang.thrown then
+        boomerang.thrown.comming_back = true
+    end
+    
 end
 
 function createBoomerang(world, player)
@@ -77,8 +89,8 @@ function createBoomerang(world, player)
         sprite = sprite,
         grid = grid,
         animation = anim8.newAnimation(grid("1-8", 1), 0.05),
-        speed = 450,
-        out_time = 0.3,
+        speed = 300,
+        out_time = 0.35,
         x = player.x,
         y = player.y,
         ox = 8,

@@ -3,7 +3,6 @@ local anim8 = require 'libraries.anim8'
 local sti = require "libraries.sti"
 local bump_sti = require "libraries.sti.plugins.bump"
 local player = require "player"
-local boomerang = require "boomerang"
 
 local world
 local map

@@ -123,9 +123,16 @@ function initializePlayer(world, layer, spawn)
 			player.dy = 0
 		end
 
-		player.x, player.y, cols = world:move(player, player.x, player.y )
+		local function filter(item, other)
+			if other == self.boomerang then
+				return false
+			else 
+				return "slide"
+			end
+		end
+		player.x, player.y, cols = world:move(player, player.x, player.y, filter )
 
-        updateBoomerang(self.boomerang, dt)
+        updateBoomerang(self.boomerang, world, dt)
 
 		if moving then 
 			player.animations[player.direction]:update(dt)
