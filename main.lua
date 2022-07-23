@@ -32,8 +32,8 @@ function love.load()
 
     map:removeLayer("Placements")
 
-	local colliders = map.layers["Barrières"]
-	colliders.visible = false
+	map.layers["Trous"].visible = false
+	map.layers["Murs"].visible = false
 end
 
 function love.keypressed(key, scancode, isrepeat)

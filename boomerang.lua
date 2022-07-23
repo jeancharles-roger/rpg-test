@@ -57,25 +57,29 @@ function updateBoomerang(boomerang, world, dt)
                 boomerang.thrown.comming_back = true
             end
         end
+
+           
+        local function filter(item, other)
+            -- filtre les objets en collision, les trous ne bloquent pas le boomerang
+            if other == boomerang.player or (other.layer and other.layer.name == "Trous") then
+                return false
+            else 
+                return "slide"
+            end
+        end
+        boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
+        -- si il y a une collision, le boomerang doit revenir
+        if #collisions > 0 and boomerang.thrown then
+            boomerang.thrown.comming_back = true
+        end
+
     else 
         -- place le boomerang sur le jouer si il n'est pas lancé
         boomerang.x = boomerang.player.x + boomerang.player.ox
         boomerang.y = boomerang.player.y + boomerang.player.oy
     end
         
-    local function filter(item, other)
-        if other == boomerang.player then
-            return false
-        else 
-            return "slide"
-        end
-    end
-    boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
-    -- il y a une collision, le boomerang doit revenir
-    if #collisions > 0 and boomerang.thrown then
-        boomerang.thrown.comming_back = true
-    end
-    
+     
 end
 
 function createBoomerang(world, player)
@@ -100,3 +104,35 @@ function createBoomerang(world, player)
     world:add(boomerang, boomerang.x, boomerang.y, 16, 16)
     return boomerang
 end
+
+
+
+function printObj(obj, hierarchyLevel) 
+    if (hierarchyLevel == nil) then
+      hierarchyLevel = 0
+    elseif (hierarchyLevel == 4) then
+      return 0
+    end
+  
+    if hierarchyLevel > 1 then return end
+
+    local whitespace = ""
+    for i=0,hierarchyLevel,1 do
+      whitespace = whitespace .. "-"
+    end
+    io.write(whitespace)
+  
+    print(obj)
+    if (type(obj) == "table") then
+      for k,v in pairs(obj) do
+        io.write(whitespace .. "-" .. k .. "->")
+        if (type(v) == "table") then
+          printObj(v, hierarchyLevel+1)
+        else
+          print(v)
+        end           
+      end
+    else
+      print(obj)
+    end
+  end
