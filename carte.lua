@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 7,
-  nextobjectid = 96,
+  nextobjectid = 100,
   properties = {},
   tilesets = {
     {
@@ -1275,11 +1275,24 @@ return {
       objects = {
         {
           id = 1,
+          name = "Argoz",
+          class = "Troll",
+          shape = "rectangle",
+          x = -9.65075,
+          y = 72.0518,
+          width = 11.4903,
+          height = 11.2211,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 99,
           name = "Joueur",
           class = "",
           shape = "rectangle",
-          x = -63.6406,
-          y = 56.7187,
+          x = -63.1904,
+          y = 56.1538,
           width = 11.4903,
           height = 11.2211,
           rotation = 0,
@@ -1322,9 +1335,9 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = -109.445,
+          x = -113.385,
           y = -117.738,
-          width = 64.251,
+          width = 68.191,
           height = 103.988,
           rotation = 0,
           visible = true,
