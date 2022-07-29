@@ -27,8 +27,10 @@ function updatePlayerAnimations(player)
 	}
 end
 
-function initializePlayer(world, layer, spawn)
+function initializePlayer(map, world, spawn)
     
+	local layer = map:addCustomLayer("Joueur", 3)
+
      -- Objet du joueur
 	local character = 4
     local sprite = love.graphics.newImage("pixmaps/Characters.png")
@@ -161,4 +163,6 @@ function initializePlayer(world, layer, spawn)
 	end
 
 	world:add(player, player.x, player.y, 16, 16)
+
+	return layer
 end

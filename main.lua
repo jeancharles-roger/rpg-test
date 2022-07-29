@@ -2,11 +2,12 @@ local bump = require "libraries.bump"
 local anim8 = require 'libraries.anim8'
 local sti = require "libraries.sti"
 local bump_sti = require "libraries.sti.plugins.bump"
+
 local player = require "player"
+local enemies = require "enemies"
 
 local world
 local map
-local layer 
 
 function love.load()
 	
@@ -15,22 +16,23 @@ function love.load()
     -- chargement de la carte
     map = sti("carte.lua", {"bump"})
 	map:bump_init(world)
-
-    -- Création d'une couche dynamique à partir de l'id 3
-    layer = map:addCustomLayer("Sprites", 3)
-
-    -- Spawn du joueur
+	
+    -- Spawn du joueur et des enemis
 	local spawn
+	local enemies = {}
 	for k, object in pairs(map.objects) do
 		if object.name == "Joueur" then
 			spawn = object
-			break
+		elseif object.name then 
+			enemies[object.name] = enemies
 		end
 	end
-
-	initializePlayer(world, layer, spawn)
-
     map:removeLayer("Placements")
+	
+	-- Création d'une couche dynamique à partir de l'id 3
+	initializePlayer(map, world, spawn)
+	initializeEnemies(map, world, enemies)
+
 
 	map.layers["Trous"].visible = false
 	map.layers["Murs"].visible = false
@@ -40,6 +42,7 @@ function love.keypressed(key, scancode, isrepeat)
 	if key == "escape" then
 	   love.event.quit()
 	elseif key == "c" then
+		local layer = map.layers["Joueur"]
 		local player = layer.player
 		player.character = player.character + 1
 		if player.character > 8 then
@@ -47,6 +50,7 @@ function love.keypressed(key, scancode, isrepeat)
 		end	 
 		updatePlayerAnimations(player)
 	elseif key == "space" then
+		local layer = map.layers["Joueur"]
 		throwBoomerang(layer.boomerang)
 	end
  end 
@@ -62,7 +66,7 @@ function love.draw()
 	local screen_height = love.graphics.getHeight() / scale
 
     -- Translate world so that player is always centred
-	local player = map.layers["Sprites"].player
+	local player = map.layers["Joueur"].player
 	local tx = math.floor(player.x - screen_width  / 2)
 	local ty = math.floor(player.y - screen_height / 2)
 
