@@ -24,7 +24,7 @@ function love.load()
 		if object.name == "Joueur" then
 			spawn = object
 		elseif object.name then 
-			enemies[object.name] = enemies
+			enemies[object.name] = object
 		end
 	end
     map:removeLayer("Placements")
@@ -32,7 +32,6 @@ function love.load()
 	-- Création d'une couche dynamique à partir de l'id 3
 	initializePlayer(map, world, spawn)
 	initializeEnemies(map, world, enemies)
-
 
 	map.layers["Trous"].visible = false
 	map.layers["Murs"].visible = false

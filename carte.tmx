@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="100">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="102">
  <editorsettings>
   <export target="carte.lua" format="lua"/>
  </editorsettings>
@@ -1009,8 +1009,10 @@
   </data>
  </layer>
  <objectgroup id="3" name="Placements">
-  <object id="1" name="Argoz" class="Troll" x="-9.65075" y="72.0518" width="11.4903" height="11.2211"/>
-  <object id="99" name="Joueur" x="-63.1904" y="56.1538" width="11.4903" height="11.2211"/>
+  <object id="1" name="Argoz" class="Orc" x="78.3594" y="-353.669" width="11.4903" height="11.2211"/>
+  <object id="99" name="Joueur" class="Joueur" x="-63.1904" y="56.1538" width="11.4903" height="11.2211"/>
+  <object id="100" name="Totor" class="Orc" x="281.244" y="67.9966" width="11.4903" height="11.2211"/>
+  <object id="101" name="Totor Jr" class="Orc" x="332.624" y="559.89" width="11.4903" height="11.2211"/>
  </objectgroup>
  <objectgroup id="4" name="Trous">
   <properties>
