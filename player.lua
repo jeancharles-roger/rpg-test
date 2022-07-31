@@ -45,9 +45,11 @@ function initializePlayer(map, world, spawn)
 		dy = 0,
 		x = spawn.x,
         y = spawn.y,
+		width = spawn.width,
+		height = spawn.height,
 		speed = 150,
-        ox = 8,
-        oy = 16
+        ox = 6,
+        oy = 10,
     }
 	layer.player = player
 
@@ -145,8 +147,8 @@ function initializePlayer(map, world, spawn)
 		local animation = self.player.animations[self.player.direction]
 		animation:draw(
 			self.player.sprite, 
-			math.floor(self.player.x),
-			math.floor(self.player.y),
+			self.player.x,
+			self.player.y,
 			0,
 			1,
 			1,
@@ -158,11 +160,10 @@ function initializePlayer(map, world, spawn)
 		
 		-- Temporarily draw a point at our location so we know
 		-- that our sprite is offset properly
-		--love.graphics.setPointSize(5)
-		--love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
+		love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)
 	end
 
-	world:add(player, player.x, player.y, 16, 16)
+	world:add(player, player.x, player.y, player.width, player.height)
 
 	return layer
 end

@@ -1010,8 +1010,8 @@
  </layer>
  <objectgroup id="3" name="Placements">
   <object id="1" name="Argoz" class="Orc" x="78.3594" y="-353.669" width="11.4903" height="11.2211"/>
-  <object id="99" name="Joueur" class="Joueur" x="-63.1904" y="56.1538" width="11.4903" height="11.2211"/>
-  <object id="100" name="Totor" class="Orc" x="42.3742" y="33.6068" width="11.4903" height="11.2211"/>
+  <object id="99" name="Joueur" class="Joueur" x="-63" y="56" width="16" height="24"/>
+  <object id="100" name="Totor" class="Orc" x="42" y="34" width="24" height="40"/>
   <object id="101" name="Totor Jr" class="Orc" x="332.624" y="559.89" width="11.4903" height="11.2211"/>
  </objectgroup>
  <objectgroup id="4" name="Trous">
@@ -1085,17 +1085,14 @@
   <object id="25" x="225.252" y="-308.967" width="31.0693" height="86.3036"/>
   <object id="26" x="260.637" y="-306.378" width="11.2195" height="69.9059"/>
   <object id="27" x="283.076" y="-311.556" width="105.29" height="11.2195"/>
-  <object id="28" x="277.035" y="-292.569" width="79.3993" height="15.5347"/>
-  <object id="29" x="265.815" y="-278.761" width="76.8102" height="8.63036"/>
-  <object id="30" x="270.13" y="-270.13" width="56.9604" height="15.5347"/>
-  <object id="31" x="270.13" y="-258.048" width="34.5214" height="11.2195"/>
+  <object id="28" x="234.521" y="-309.821" width="75.0863" height="33.4028"/>
+  <object id="29" x="265.815" y="-278.761" width="29.3672" height="17.2564"/>
   <object id="35" x="446.19" y="-314.145" width="870.288" height="100.975"/>
-  <object id="36" x="381.462" y="-249.417" width="69.0429" height="30.2063"/>
-  <object id="37" x="387.503" y="-260.637" width="51.7822" height="6.04125"/>
-  <object id="38" x="408.216" y="-279.624" width="28.4802" height="27.6172"/>
-  <object id="39" x="327.091" y="-236.472" width="54.3713" height="17.2607"/>
-  <object id="40" x="254.596" y="-297.747" width="128.592" height="6.04125"/>
-  <object id="41" x="371.969" y="-309.83" width="38.8366" height="2.58911"/>
+  <object id="36" x="377.149" y="-246.952" width="69.0429" height="30.2063"/>
+  <object id="37" x="396.745" y="-260.637" width="51.7822" height="14.6673"/>
+  <object id="38" x="431.013" y="-277.159" width="17.3896" height="23.9203"/>
+  <object id="39" x="328.323" y="-230.927" width="53.139" height="11.7154"/>
+  <object id="40" x="254.596" y="-302.676" width="98.401" height="17.1318"/>
   <object id="9" x="905.325" y="-466.04" width="75.0841" height="124.277"/>
   <object id="73" x="220.663" y="-914.541" width="66.3265" height="47.1939"/>
   <object id="74" x="385.204" y="-640.306" width="31.8878" height="30.6122"/>

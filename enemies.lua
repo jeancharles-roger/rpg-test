@@ -15,9 +15,17 @@ function initializeEnemies(map, world, enemies)
 		anim8.newAnimation(grid("1-3", 4), 0.1),
 	}
 
+    -- Ajoute les enemies dans world pour les collisions
+    for name, enemy in pairs(layer.enemies) do
+        if enemy.class == "Orc" then
+            enemy.width = 30
+            enemy.height = 40
+        end
+        
+        world:add(enemy, enemy.x, enemy.y, enemy.width, enemy.height)
+    end
 
     layer.update = function(self, dt)
-		
         for name, animations in pairs(self.animations) do
             for index, animation in pairs(animations) do
                 animation:update(dt)
@@ -40,15 +48,14 @@ function initializeEnemies(map, world, enemies)
                     enemy.ox,
                     enemy.oy
                 )
+
+                love.graphics.rectangle("line", enemy.x, enemy.y, enemy.width, enemy.height)
+
             else
                 love.graphics.print(name, enemy.x, enemy.y)
             end
         end
 
-		-- Temporarily draw a point at our location so we know
-		-- that our sprite is offset properly
-		--love.graphics.setPointSize(5)
-		--love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 	end
 
 end
