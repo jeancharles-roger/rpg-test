@@ -130,6 +130,8 @@ function initializePlayer(map, world, spawn)
 		local function filter(item, other)
 			if other == self.boomerang then
 				return false
+			elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
+				return false
 			else 
 				return "slide"
 			end

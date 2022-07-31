@@ -59,8 +59,7 @@ function love.update(dt)
 end
 
 function love.draw()
-
-    local scale = 2
+    local scale = 1.5
 	local screen_width  = love.graphics.getWidth()  / scale
 	local screen_height = love.graphics.getHeight() / scale
 

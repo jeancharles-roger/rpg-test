@@ -2,6 +2,8 @@ local anim8 = require 'libraries.anim8'
 
 function throwBoomerang(boomerang)
     if boomerang.thrown == nil then
+        boomerang.x = boomerang.player.x + boomerang.player.ox
+        boomerang.y = boomerang.player.y + boomerang.player.oy        
         boomerang.thrown = {
             time = 0,
             dx = boomerang.player.dx,
@@ -14,7 +16,7 @@ end
 function displayBoomerang(boomerang) 
     local dx = math.abs(boomerang.player.x + boomerang.player.ox - boomerang.x)
     local dy = math.abs(boomerang.player.y + boomerang.player.oy - boomerang.y)
-    if boomerang.thrown ~= nil and (dx > 4 or dy > 4) then
+    if boomerang.thrown ~= nil then
         boomerang.animation:draw(
             boomerang.sprite, 
             boomerang.x,
@@ -31,12 +33,15 @@ end
 
 function updateBoomerang(boomerang, world, dt) 
     boomerang.animation:update(dt)
-
-    if boomerang.thrown ~= nil then    
+    
+    if boomerang.thrown ~= nil then 
+        local time = boomerang.thrown.time + dt    
+        boomerang.thrown.time = time
+        
         if boomerang.thrown.comming_back then
             local dx = boomerang.player.x + boomerang.player.ox - boomerang.x
             local dy = boomerang.player.y + boomerang.player.oy - boomerang.y
-            if math.abs(dx) > 2 or math.abs(dy) > 2  then
+            if math.abs(dx) > 2 or math.abs(dy) > 2 then
                 -- fait revenir le boomerang
                 local norm = math.sqrt(dx*dx + dy*dy)   
                 
@@ -48,7 +53,6 @@ function updateBoomerang(boomerang, world, dt)
             end
         else
             -- fait partir le boomerang
-            boomerang.thrown.time = boomerang.thrown.time + dt 
             boomerang.x = boomerang.x + boomerang.thrown.dx * boomerang.speed * dt
             boomerang.y = boomerang.y + boomerang.thrown.dy * boomerang.speed * dt
             
@@ -58,37 +62,37 @@ function updateBoomerang(boomerang, world, dt)
             end
         end
 
-           
-        local function filter(item, other)
-            -- filtre les objets en collision, les trous ne bloquent pas le boomerang
-            if other == boomerang.player or (other.layer and other.layer.name == "Trous") then
-                return false
-            else 
-                return "slide"
+        
+        if time < boomerang.max_out_time then 
+            local function filter(item, other)
+                -- filtre les objets en collision, les trous ne bloquent pas le boomerang
+                if other == boomerang.player then
+                    return false
+                elseif other.layer and other.layer.name == "Trous" then
+                    return false
+                elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
+                    return false
+                else 
+                    return "slide"
+                end
             end
-        end
-        boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
-        -- si il y a une collision, le boomerang doit revenir
-        if #collisions > 0 and boomerang.thrown then
-            boomerang.thrown.comming_back = true
-            
-            -- Teste si la collision peut-être tuée ?
-            local collision = collisions[1]
-            local element = collision.other
-            if element.killable == true then
-                element.healthpoints = element.healthpoints - 1
-                if element.healthpoints < 0 then
-                    element.healthpoints = 0
+            boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
+            -- si il y a une collision, le boomerang doit revenir
+            if #collisions > 0 and boomerang.thrown then
+                boomerang.thrown.comming_back = true
+                
+                -- Teste si la collision peut-être tuée ?
+                local collision = collisions[1]
+                local element = collision.other
+                if element.killable == true then
+                    element.healthpoints = element.healthpoints - 1
+                    if element.healthpoints < 0 then
+                        element.healthpoints = 0
+                    end
                 end
             end
         end
-
-    else 
-        -- place le boomerang sur le jouer si il n'est pas lancé
-        boomerang.x = boomerang.player.x + boomerang.player.ox
-        boomerang.y = boomerang.player.y + boomerang.player.oy
     end
-        
      
 end
 
@@ -105,6 +109,7 @@ function createBoomerang(world, player)
         animation = anim8.newAnimation(grid("1-8", 1), 0.05),
         speed = 300,
         out_time = 0.35,
+        max_out_time = 1.5,
         x = player.x,
         y = player.y,
         ox = 8,
