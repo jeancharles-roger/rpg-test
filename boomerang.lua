@@ -14,8 +14,6 @@ function throwBoomerang(boomerang)
 end
 
 function displayBoomerang(boomerang) 
-    local dx = math.abs(boomerang.player.x + boomerang.player.ox - boomerang.x)
-    local dy = math.abs(boomerang.player.y + boomerang.player.oy - boomerang.y)
     if boomerang.thrown ~= nil then
         boomerang.animation:draw(
             boomerang.sprite, 
