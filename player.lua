@@ -160,7 +160,7 @@ function initializePlayer(map, world, spawn)
 		
 		-- Temporarily draw a point at our location so we know
 		-- that our sprite is offset properly
-		love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)
+		-- love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)
 	end
 
 	world:add(player, player.x, player.y, player.width, player.height)

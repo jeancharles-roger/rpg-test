@@ -71,6 +71,16 @@ function updateBoomerang(boomerang, world, dt)
         -- si il y a une collision, le boomerang doit revenir
         if #collisions > 0 and boomerang.thrown then
             boomerang.thrown.comming_back = true
+            
+            -- Teste si la collision peut-être tuée ?
+            local collision = collisions[1]
+            local element = collision.other
+            if element.killable == true then
+                element.healthpoints = element.healthpoints - 1
+                if element.healthpoints < 0 then
+                    element.healthpoints = 0
+                end
+            end
         end
 
     else 
