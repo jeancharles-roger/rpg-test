@@ -46,12 +46,15 @@ function initializePlayer(map, world, spawn)
 		dy = 0,
 		x = spawn.x,
         y = spawn.y,
+		spawn = spawn,
 		width = spawn.width,
 		height = spawn.height,
 		speed = 150,
         ox = 6,
         oy = 10,
-		wounded_time = 0.5
+		wounded_time = 0.5,
+		healthpoints = 5,
+		max_healthpoints = 5,
     }
 	layer.player = player
 
@@ -165,10 +168,20 @@ function playerUpdate(self, dt)
 				break
 			end
 		end
+
 		if wounded then
-			player.wounded = {
-				time = 0
-			}
+			player.healthpoints = player.healthpoints - 1
+			if player.healthpoints <= 0 then
+				-- remete le joueur au point de départ
+				player.healthpoints = player.max_healthpoints
+				player.x = player.spawn.x
+				player.y = player.spawn.y
+				player.world:update(player, player.x, player.y)      
+			else
+				player.wounded = {
+					time = 0
+				}
+			end
 		end
 	end
 

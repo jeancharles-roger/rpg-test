@@ -3,7 +3,8 @@ local anim8 = require 'libraries.anim8'
 function throwBoomerang(boomerang)
     if boomerang.thrown == nil then
         boomerang.x = boomerang.player.x + boomerang.player.ox
-        boomerang.y = boomerang.player.y + boomerang.player.oy        
+        boomerang.y = boomerang.player.y + boomerang.player.oy  
+        boomerang.world:update(boomerang, boomerang.x, boomerang.y)      
         boomerang.thrown = {
             time = 0,
             dx = boomerang.player.dx,
