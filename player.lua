@@ -51,7 +51,7 @@ function initializePlayer(map, world, spawn)
 		speed = 150,
         ox = 6,
         oy = 10,
-		wounded = false,
+		wounded_time = 0.5
     }
 	layer.player = player
 
@@ -149,17 +149,27 @@ function playerUpdate(self, dt)
 
 	player.x, player.y, collisions = player.world:move(player, player.x, player.y, filter )
 
-	-- teste si le joueur a touché un enemi 
-	local wounded = false
-	for _, object in ipairs(collisions) do
-		local element = object.other
-		if element.dangerous then
-			wounded = true
-			break
+	if player.wounded then
+		player.wounded.time = player.wounded.time + dt
+		
+		if player.wounded.time > player.wounded_time then
+			player.wounded = nil
 		end
-	end
-	if wounded then
-		player.wounded = true
+	else
+		-- teste si le joueur a touché un enemi 
+		local wounded = false
+		for _, object in ipairs(collisions) do
+			local element = object.other
+			if element.dangerous then
+				wounded = true
+				break
+			end
+		end
+		if wounded then
+			player.wounded = {
+				time = 0
+			}
+		end
 	end
 
 
@@ -171,20 +181,25 @@ function playerUpdate(self, dt)
 end
 
 function playerDraw(self)
-	local animation = self.player.animations[self.player.direction]
+	local player = self.player
+	local animation = player.animations[player.direction]
 	animation:draw(
-		self.player.sprite, 
-		self.player.x,
-		self.player.y,
+		player.sprite, 
+		player.x,
+		player.y,
 		0,
 		1,
 		1,
-		self.player.ox,
-		self.player.oy
+		player.ox,
+		player.oy
 	)
 
 	displayBoomerang(self.boomerang)
 	
+	if player.wounded then
+		love.graphics.print("aie", player.x + 15, player.y - 15)
+	end
+
 	-- Temporarily draw a point at our location so we know
 	-- that our sprite is offset properly
 	-- love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)	
