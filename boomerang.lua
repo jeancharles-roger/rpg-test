@@ -33,8 +33,7 @@ function updateBoomerang(boomerang, world, dt)
     boomerang.animation:update(dt)
     
     if boomerang.thrown ~= nil then 
-        local time = boomerang.thrown.time + dt    
-        boomerang.thrown.time = time
+        boomerang.thrown.time = boomerang.thrown.time + dt    
         
         if boomerang.thrown.comming_back then
             local dx = boomerang.player.x + boomerang.player.ox - boomerang.x
@@ -61,37 +60,39 @@ function updateBoomerang(boomerang, world, dt)
         end
 
         
-        if time < boomerang.max_out_time then 
-            local function filter(item, other)
-                -- filtre les objets en collision, les trous ne bloquent pas le boomerang
-                if other == boomerang.player then
-                    return false
-                elseif other.layer and other.layer.name == "Trous" then
-                    return false
-                elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
-                    return false
-                else 
-                    return "slide"
-                end
+        local function filter(item, other)
+            -- filtre les objets en collision, les trous ne bloquent pas le boomerang
+            if other == boomerang.player then
+                return false
+            elseif other.layer and other.layer.name == "Trous" then
+                return false
+            elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
+                return false
+            else
+                return "slide"
             end
-            boomerang.x, boomerang.y, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter )
-            -- si il y a une collision, le boomerang doit revenir
-            if #collisions > 0 and boomerang.thrown then
-                boomerang.thrown.comming_back = true
-                
-                -- Teste si la collision peut-être tuée ?
-                local collision = collisions[1]
-                local element = collision.other
-                if element.killable == true then
-                    element.healthpoints = element.healthpoints - 1
-                    if element.healthpoints < 0 then
-                        element.healthpoints = 0
-                    end
+        end
+
+        -- ne mets pas à jour boomerang.x et boomerang.y cela permet au boomerang de rentrer à travers les objets
+        _, _, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter)
+        
+        -- si il y a une collision, le boomerang doit revenir
+        if #collisions > 0 and boomerang.thrown then
+            boomerang.thrown.comming_back = true
+            
+            -- Teste si la collision peut-être tuée ?
+            local collision = collisions[1]
+            local element = collision.other
+            if element.killable == true then
+                element.healthpoints = element.healthpoints - 1
+                if element.healthpoints < 0 then
+                    element.healthpoints = 0
                 end
             end
         end
+    
     end
-     
+
 end
 
 function createBoomerang(world, player)
