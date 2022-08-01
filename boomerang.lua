@@ -29,7 +29,7 @@ function displayBoomerang(boomerang)
 
 end
 
-function updateBoomerang(boomerang, world, dt) 
+function updateBoomerang(boomerang, dt) 
     boomerang.animation:update(dt)
     
     if boomerang.thrown ~= nil then 
@@ -74,7 +74,7 @@ function updateBoomerang(boomerang, world, dt)
         end
 
         -- ne mets pas à jour boomerang.x et boomerang.y cela permet au boomerang de rentrer à travers les objets
-        _, _, collisions = world:move(boomerang, boomerang.x, boomerang.y, filter)
+        _, _, collisions = boomerang.world:move(boomerang, boomerang.x, boomerang.y, filter)
         
         -- si il y a une collision, le boomerang doit revenir
         if #collisions > 0 and boomerang.thrown then
@@ -102,6 +102,7 @@ function createBoomerang(world, player)
     local grid = anim8.newGrid(16, 16, sprite:getWidth(), sprite:getHeight())
 
     local boomerang = { 
+        world = world,
         player = player,
         sprite = sprite,
         grid = grid,
@@ -115,38 +116,7 @@ function createBoomerang(world, player)
         oy = 16,
         thrown = nil,
     }
+
     world:add(boomerang, boomerang.x, boomerang.y, 16, 16)
     return boomerang
 end
-
-
-
-function printObj(obj, hierarchyLevel) 
-    if (hierarchyLevel == nil) then
-      hierarchyLevel = 0
-    elseif (hierarchyLevel == 4) then
-      return 0
-    end
-  
-    if hierarchyLevel > 1 then return end
-
-    local whitespace = ""
-    for i=0,hierarchyLevel,1 do
-      whitespace = whitespace .. "-"
-    end
-    io.write(whitespace)
-  
-    print(obj)
-    if (type(obj) == "table") then
-      for k,v in pairs(obj) do
-        io.write(whitespace .. "-" .. k .. "->")
-        if (type(v) == "table") then
-          printObj(v, hierarchyLevel+1)
-        else
-          print(v)
-        end           
-      end
-    else
-      print(obj)
-    end
-  end

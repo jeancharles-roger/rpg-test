@@ -37,6 +37,7 @@ function initializePlayer(map, world, spawn)
 	local grid = anim8.newGrid(26, 36, sprite:getWidth(), sprite:getHeight())
 	
     local player = {
+		world = world,
         character = character,
         sprite = sprite,
 		grid = grid,
@@ -50,6 +51,7 @@ function initializePlayer(map, world, spawn)
 		speed = 150,
         ox = 6,
         oy = 10,
+		wounded = false,
     }
 	layer.player = player
 
@@ -57,115 +59,133 @@ function initializePlayer(map, world, spawn)
      
     layer.boomerang = createBoomerang(world, player)
 
-    layer.update = function(self, dt)
-		local player = self.player
-		-- 96 pixels per second
-		local speed = player.speed * dt
-		local diagSpeed = speed / sqrtOf2
-
-		local up = love.keyboard.isDown("w", "up")
-		local down = love.keyboard.isDown("s", "down")
-		local left = love.keyboard.isDown("a", "left")
-		local right = love.keyboard.isDown("d", "right")
-
-		-- protects from contrary inputs
-		if up and down then 
-			up = false
-			down = false
-		end
-		if left and right then 
-			left = false
-			right = false
-		end
- 
-		local moving = up or down or left or right
-
-		-- updates positions
-		if up and left then
-			player.x = player.x - diagSpeed
-			player.y = player.y - diagSpeed
-			player.direction = 1
-			player.dx = -1/sqrtOf2
-			player.dy = -1/sqrtOf2
-		elseif up and right then
-			player.x = player.x + diagSpeed
-			player.y = player.y - diagSpeed			
-			player.direction = 4
-			player.dx = 1/sqrtOf2
-			player.dy = -1/sqrtOf2
-		elseif down and left then
-			player.x = player.x - diagSpeed
-			player.y = player.y + diagSpeed			
-			player.direction = 1
-			player.dx = -1/sqrtOf2
-			player.dy = 1/sqrtOf2
-		elseif down and right then
-			player.x = player.x + diagSpeed
-			player.y = player.y + diagSpeed		
-			player.direction = 4
-			player.dx = 1/sqrtOf2
-			player.dy = 1/sqrtOf2
-		elseif up then
-			player.y = player.y - speed
-			player.direction = 3
-			player.dx = 0
-			player.dy = -1
-		elseif down then
-			player.y = player.y + speed
-			player.direction = 2
-			player.dx = 0
-			player.dy = 1
-		elseif left then
-			player.x = player.x - speed
-			player.direction = 1
-			player.dx = -1
-			player.dy = 0
-		elseif right then
-			player.x = player.x + speed
-			player.direction = 4
-			player.dx = 1
-			player.dy = 0
-		end
-
-		local function filter(item, other)
-			if other == self.boomerang then
-				return false
-			elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
-				return false
-			else 
-				return "slide"
-			end
-		end
-		player.x, player.y, cols = world:move(player, player.x, player.y, filter )
-
-        updateBoomerang(self.boomerang, world, dt)
-
-		if moving then 
-			player.animations[player.direction]:update(dt)
-		end
-	end
-
-    layer.draw = function(self)
-		local animation = self.player.animations[self.player.direction]
-		animation:draw(
-			self.player.sprite, 
-			self.player.x,
-			self.player.y,
-			0,
-			1,
-			1,
-			self.player.ox,
-			self.player.oy
-		)
-
-		displayBoomerang(self.boomerang)
-		
-		-- Temporarily draw a point at our location so we know
-		-- that our sprite is offset properly
-		-- love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)
-	end
+    layer.update = playerUpdate
+    layer.draw = playerDraw
 
 	world:add(player, player.x, player.y, player.width, player.height)
 
 	return layer
+end
+
+function playerUpdate(self, dt)
+	local player = self.player
+
+	local speed = player.speed * dt
+	local diagSpeed = speed / sqrtOf2
+
+	local up = love.keyboard.isDown("w", "up")
+	local down = love.keyboard.isDown("s", "down")
+	local left = love.keyboard.isDown("a", "left")
+	local right = love.keyboard.isDown("d", "right")
+
+	-- protects from contrary inputs
+	if up and down then 
+		up = false
+		down = false
+	end
+	if left and right then 
+		left = false
+		right = false
+	end
+
+	local moving = up or down or left or right
+
+	-- updates positions
+	if up and left then
+		player.x = player.x - diagSpeed
+		player.y = player.y - diagSpeed
+		player.direction = 1
+		player.dx = -1/sqrtOf2
+		player.dy = -1/sqrtOf2
+	elseif up and right then
+		player.x = player.x + diagSpeed
+		player.y = player.y - diagSpeed			
+		player.direction = 4
+		player.dx = 1/sqrtOf2
+		player.dy = -1/sqrtOf2
+	elseif down and left then
+		player.x = player.x - diagSpeed
+		player.y = player.y + diagSpeed			
+		player.direction = 1
+		player.dx = -1/sqrtOf2
+		player.dy = 1/sqrtOf2
+	elseif down and right then
+		player.x = player.x + diagSpeed
+		player.y = player.y + diagSpeed		
+		player.direction = 4
+		player.dx = 1/sqrtOf2
+		player.dy = 1/sqrtOf2
+	elseif up then
+		player.y = player.y - speed
+		player.direction = 3
+		player.dx = 0
+		player.dy = -1
+	elseif down then
+		player.y = player.y + speed
+		player.direction = 2
+		player.dx = 0
+		player.dy = 1
+	elseif left then
+		player.x = player.x - speed
+		player.direction = 1
+		player.dx = -1
+		player.dy = 0
+	elseif right then
+		player.x = player.x + speed
+		player.direction = 4
+		player.dx = 1
+		player.dy = 0
+	end
+
+	local function filter(item, other)
+		if other == self.boomerang then
+			return false
+		elseif other.healthpoints ~= nil and other.healthpoints <= 0 then
+			return false
+		else 
+			return "slide"
+		end
+	end
+
+	player.x, player.y, collisions = player.world:move(player, player.x, player.y, filter )
+
+	-- teste si le joueur a touché un enemi 
+	local wounded = false
+	for _, object in ipairs(collisions) do
+		local element = object.other
+		if element.dangerous then
+			wounded = true
+			break
+		end
+	end
+	if wounded then
+		player.wounded = true
+	end
+
+
+	updateBoomerang(self.boomerang, dt)
+
+	if moving then 
+		player.animations[player.direction]:update(dt)
+	end
+end
+
+function playerDraw(self)
+	local animation = self.player.animations[self.player.direction]
+	animation:draw(
+		self.player.sprite, 
+		self.player.x,
+		self.player.y,
+		0,
+		1,
+		1,
+		self.player.ox,
+		self.player.oy
+	)
+
+	displayBoomerang(self.boomerang)
+	
+	-- Temporarily draw a point at our location so we know
+	-- that our sprite is offset properly
+	-- love.graphics.rectangle("line", self.player.x, self.player.y, player.width, player.height)	
 end

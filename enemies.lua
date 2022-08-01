@@ -19,6 +19,7 @@ function initializeEnemies(map, world, enemies)
     for name, enemy in pairs(layer.enemies) do
         -- On peut le tuer
         enemy.killable = true
+        enemy.dangerous = true
         
         if enemy.class == "Orc" then
             enemy.width = 30
