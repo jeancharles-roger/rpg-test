@@ -30,8 +30,8 @@ function love.load()
     map:removeLayer("Placements")
 	
 	-- Création d'une couche dynamique à partir de l'id 3
-	initializePlayer(map, world, spawn)
-	initializeEnemies(map, world, enemies)
+	local player = initializePlayer(map, world, spawn)
+	initializeEnemies(map, world, enemies, player.player)
 
 	map.layers["Trous"].visible = false
 	map.layers["Murs"].visible = false
@@ -59,10 +59,12 @@ function love.update(dt)
 end
 
 function love.draw()
-    local scale = 1.5
+    local scale = 2
 	local screen_width  = love.graphics.getWidth()  / scale
 	local screen_height = love.graphics.getHeight() / scale
 
+	map.scale = scale
+	
     -- Translate world so that player is always centred
 	local player = map.layers["Joueur"].player
 	local tx = math.floor(player.x - screen_width  / 2)
