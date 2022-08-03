@@ -3,7 +3,7 @@ anim8 = require 'libraries.anim8'
 sti = require "libraries.sti"
 bump_sti = require "libraries.sti.plugins.bump"
 
-local player = require "boomerang"
+local boomerang = require "boomerang"
 local player = require "player"
 local npcs = require "npcs"
 local characters = require "characters"
