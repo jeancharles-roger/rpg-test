@@ -1,10 +1,10 @@
 local anim8 = require 'libraries.anim8'
 
-function initializeEnemies(map, world, enemies, player)
-    local layer = map:addCustomLayer("Enemis", 2)
+function initializeNpcs(map, world, npcs, player)
+    local layer = map:addCustomLayer("PNJs", 2)
     layer.map = map
     layer.player = player
-    layer.enemies = enemies
+    layer.npcs = npcs
     layer.animations = {}
 
     layer.sprite = love.graphics.newImage("pixmaps/orc.png")
@@ -17,8 +17,8 @@ function initializeEnemies(map, world, enemies, player)
 		anim8.newAnimation(grid("1-3", 4), 0.1),
 	}
 
-    -- Ajoute les enemies dans world pour les collisions
-    for name, enemy in pairs(layer.enemies) do
+    -- Ajoute les npcs dans world pour les collisions
+    for name, enemy in pairs(layer.npcs) do
         -- On peut le tuer
         enemy.killable = true
         enemy.dangerous = true
@@ -38,12 +38,12 @@ function initializeEnemies(map, world, enemies, player)
         world:add(enemy, enemy.x, enemy.y, enemy.width, enemy.height)
     end
 
-    layer.update = updateEnemies
-    layer.draw = drawEnemies
+    layer.update = updateNpcs
+    layer.draw = drawNpcs
 
 end
 
-function updateEnemies(self, dt)
+function updateNpcs(self, dt)
     for name, animations in pairs(self.animations) do
         for index, animation in pairs(animations) do
             animation:update(dt)
@@ -54,7 +54,7 @@ function updateEnemies(self, dt)
     local maxWidth = love.graphics.getWidth() / 1.70 / scale
     local maxHeight = love.graphics.getHeight() / 1.60 / scale
 
-    for name, enemy in pairs(self.enemies) do
+    for name, enemy in pairs(self.npcs) do
         -- ressucite les énemis mort si ils sont loin du joueur
         if enemy.healthpoints < enemy.max_healthpoints then 
             local dx = math.abs(enemy.x - self.player.x)
@@ -66,8 +66,8 @@ function updateEnemies(self, dt)
     end
 end
 
-function drawEnemies(self)
-    for name, enemy in pairs(self.enemies) do
+function drawNpcs(self)
+    for name, enemy in pairs(self.npcs) do
         if enemy.healthpoints > 0 then 
             local animation = self.animations[enemy.class]
             if animation ~= nil then 

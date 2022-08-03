@@ -4,7 +4,7 @@ local sti = require "libraries.sti"
 local bump_sti = require "libraries.sti.plugins.bump"
 
 local player = require "player"
-local enemies = require "enemies"
+local npcs = require "npcs"
 
 local world
 local map
@@ -17,21 +17,21 @@ function love.load()
     map = sti("carte.lua", {"bump"})
 	map:bump_init(world)
 	
-    -- Spawn du joueur et des enemis
+    -- Spawn du joueur et des pnjs
 	local spawn
-	local enemies = {}
+	local npcs = {}
 	for k, object in pairs(map.objects) do
 		if object.name == "Joueur" then
 			spawn = object
 		elseif object.name then 
-			enemies[object.name] = object
+			npcs[object.name] = object
 		end
 	end
     map:removeLayer("Placements")
 	
 	-- Création d'une couche dynamique à partir de l'id 3
 	local player = initializePlayer(map, world, spawn)
-	initializeEnemies(map, world, enemies, player.player)
+	initializeNpcs(map, world, npcs, player.player)
 
 	map.layers["Trous"].visible = false
 	map.layers["Murs"].visible = false

@@ -159,7 +159,7 @@ function playerUpdate(self, dt)
 			player.wounded = nil
 		end
 	else
-		-- teste si le joueur a touché un enemi 
+		-- teste si le joueur a touché un npc 
 		local wounded = false
 		for _, object in ipairs(collisions) do
 			local element = object.other
