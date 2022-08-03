@@ -5,13 +5,13 @@ function initializePlayer(map, world, spawn)
     
 	local layer = map:addCustomLayer("Joueur", 3)
 
-     -- Objet du joueur
+    -- Objet du joueur
+	local character = "Boy"
     local player = {
 		world = world,
-        character = 4,
+        character = character,
         sprite = charactersSprite,
-		grid = charactersGrid,
-		animations = characterAnimations(4),
+		animations = characterAnimations(character),
 		direction = 1,
 		dx = 1,
 		dy = 0,

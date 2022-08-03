@@ -1,13 +1,13 @@
 
 charactersGridPositions = {
-	{ "1-3", 1 },
-	{ "4-6", 1 },
-	{ "7-9", 1 },
-	{ "10-12", 1 },
-	{ "1-3", 5 },
-	{ "4-6", 5 },
-	{ "7-9", 5 },
-	{ "10-12", 5 },
+	Eagle = { "1-3", 1 },
+	Invisible = { "4-6", 1 },
+	Girl = { "7-9", 1 },
+	Boy = { "10-12", 1 },
+	Blue = { "1-3", 5 },
+	Red = { "4-6", 5 },
+	Yellow = { "7-9", 5 },
+	Green = { "10-12", 5 },
 }
 
 charactersSprite = love.graphics.newImage("pixmaps/Characters.png")
