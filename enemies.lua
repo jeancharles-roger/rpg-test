@@ -56,7 +56,7 @@ function updateEnemies(self, dt)
 
     for name, enemy in pairs(self.enemies) do
         -- ressucite les énemis mort si ils sont loin du joueur
-        if enemy.healthpoints <= 0 then 
+        if enemy.healthpoints < enemy.max_healthpoints then 
             local dx = math.abs(enemy.x - self.player.x)
             local dy = math.abs(enemy.y - self.player.y)
             if dx > maxWidth or dy > maxHeight then
