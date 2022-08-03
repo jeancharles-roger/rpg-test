@@ -103,7 +103,7 @@
         "carte.tmx"
     ],
     "project": "rpg.tiled-project",
-    "property.type": "bool",
+    "property.type": "int",
     "recentFiles": [
         "carte.tmx",
         "world.tmx",

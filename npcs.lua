@@ -10,7 +10,6 @@ function initializeNpcs(map, world, npcs, player)
     for name, npc in pairs(layer.npcs) do
         
         local characterInfo = charactersInfos[npc.class]
-
         if characterInfo then
             npc.width = characterInfo.width
             npc.height = characterInfo.height
@@ -18,7 +17,7 @@ function initializeNpcs(map, world, npcs, player)
             npc.max_healthpoints = characterInfo.max_healthpoints
             npc.killable = characterInfo.killable or false
             npc.dangerous = characterInfo.dangerous or false
-
+            
             npc.sprite = characterInfo.sprite
             npc.animations = characterAnimations(characterInfo)
         else
@@ -26,8 +25,9 @@ function initializeNpcs(map, world, npcs, player)
             npc.height = 30
         end
 
+        npc.direction = npc.properties.direction or 1
         npc.moving = false
-
+        
         world:add(npc, npc.x, npc.y, npc.width, npc.height)
     end
 
@@ -45,9 +45,8 @@ function updateNpcs(self, dt)
     for name, npc in pairs(self.npcs) do
 
         if npc.moving and npc.animations then
-            for index, animation in pairs(npc.animations) do
-                animation:update(dt)
-            end
+            local animation = npc.animations[npc.direction]
+            animation:update(dt)
         end
 
         -- ressucite les enemis mort si ils sont loin du joueur
@@ -65,7 +64,7 @@ function drawNpcs(self)
     for name, npc in pairs(self.npcs) do
         if npc.healthpoints == nil or npc.healthpoints > 0 then 
             if npc.animations ~= nil then 
-                npc.animations[1]:draw(
+                npc.animations[npc.direction or 1]:draw(
                     npc.sprite, 
                     math.floor(npc.x),
                     math.floor(npc.y),

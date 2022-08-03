@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 7,
-  nextobjectid = 105,
+  nextobjectid = 106,
   properties = {},
   tilesets = {
     {
@@ -1330,10 +1330,10 @@ return {
           name = "Maire",
           class = "Eagle",
           shape = "rectangle",
-          x = -231.501,
-          y = 13.2886,
-          width = 49.6573,
-          height = 55.2525,
+          x = -222.409,
+          y = 18.1844,
+          width = 37.7675,
+          height = 47.5591,
           rotation = 0,
           visible = true,
           properties = {}
@@ -1347,6 +1347,19 @@ return {
           y = 4.89579,
           width = 0,
           height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 105,
+          name = "Nage",
+          class = "Green",
+          shape = "rectangle",
+          x = -262.71,
+          y = 199.423,
+          width = 37.7675,
+          height = 47.5591,
           rotation = 0,
           visible = true,
           properties = {}

@@ -61,9 +61,9 @@ function characterAnimations(character)
 	local column = character.column
 	local grid = character.grid
 	return {
-		anim8.newAnimation(grid(lines, column + 1), 0.1),
 		anim8.newAnimation(grid(lines, column + 0), 0.1),
-		anim8.newAnimation(grid(lines, column + 3), 0.1),
+		anim8.newAnimation(grid(lines, column + 1), 0.1),
 		anim8.newAnimation(grid(lines, column + 2), 0.1),
+		anim8.newAnimation(grid(lines, column + 3), 0.1),
 	}
 end

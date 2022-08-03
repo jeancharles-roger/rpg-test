@@ -68,45 +68,45 @@ function playerUpdate(self, dt)
 	if up and left then
 		player.x = player.x - diagSpeed
 		player.y = player.y - diagSpeed
-		player.direction = 1
+		player.direction = 2
 		player.dx = -1/sqrtOf2
 		player.dy = -1/sqrtOf2
 	elseif up and right then
 		player.x = player.x + diagSpeed
 		player.y = player.y - diagSpeed			
-		player.direction = 4
+		player.direction = 3
 		player.dx = 1/sqrtOf2
 		player.dy = -1/sqrtOf2
 	elseif down and left then
 		player.x = player.x - diagSpeed
 		player.y = player.y + diagSpeed			
-		player.direction = 1
+		player.direction = 2
 		player.dx = -1/sqrtOf2
 		player.dy = 1/sqrtOf2
 	elseif down and right then
 		player.x = player.x + diagSpeed
 		player.y = player.y + diagSpeed		
-		player.direction = 4
+		player.direction = 3
 		player.dx = 1/sqrtOf2
 		player.dy = 1/sqrtOf2
 	elseif up then
 		player.y = player.y - speed
-		player.direction = 3
+		player.direction = 4
 		player.dx = 0
 		player.dy = -1
 	elseif down then
 		player.y = player.y + speed
-		player.direction = 2
+		player.direction = 1
 		player.dx = 0
 		player.dy = 1
 	elseif left then
 		player.x = player.x - speed
-		player.direction = 1
+		player.direction = 2
 		player.dx = -1
 		player.dy = 0
 	elseif right then
 		player.x = player.x + speed
-		player.direction = 4
+		player.direction = 3
 		player.dx = 1
 		player.dy = 0
 	end
