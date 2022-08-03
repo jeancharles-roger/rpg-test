@@ -1,10 +1,12 @@
-local bump = require "libraries.bump"
-local anim8 = require 'libraries.anim8'
-local sti = require "libraries.sti"
-local bump_sti = require "libraries.sti.plugins.bump"
+bump = require "libraries.bump"
+anim8 = require 'libraries.anim8'
+sti = require "libraries.sti"
+bump_sti = require "libraries.sti.plugins.bump"
 
+local player = require "boomerang"
 local player = require "player"
 local npcs = require "npcs"
+local characters = require "characters"
 
 local world
 local map
@@ -40,14 +42,6 @@ end
 function love.keypressed(key, scancode, isrepeat)
 	if key == "escape" then
 	   love.event.quit()
-	elseif key == "c" then
-		local layer = map.layers["Joueur"]
-		local player = layer.player
-		player.character = player.character + 1
-		if player.character > 8 then
-			player.character = 1
-		end	 
-		updatePlayerAnimations(player)
 	elseif key == "space" then
 		local layer = map.layers["Joueur"]
 		throwBoomerang(layer.boomerang)

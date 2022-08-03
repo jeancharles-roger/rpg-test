@@ -1,46 +1,17 @@
 
-local anim8 = require 'libraries.anim8'
-
-require 'boomerang'
-
 local sqrtOf2 = 1.4142135624
-local characterGridPositions = {
-	{ "1-3", 1 },
-	{ "4-6", 1 },
-	{ "7-9", 1 },
-	{ "10-12", 1 },
-	{ "1-3", 5 },
-	{ "4-6", 5 },
-	{ "7-9", 5 },
-	{ "10-12", 5 },
-}
-
-function updatePlayerAnimations(player)
-	local grid = player.grid
-	local lines = characterGridPositions[player.character][1]
-	local column = characterGridPositions[player.character][2]
-	player.animations = {
-		anim8.newAnimation(grid(lines, column + 1), 0.1),
-		anim8.newAnimation(grid(lines, column + 0), 0.1),
-		anim8.newAnimation(grid(lines, column + 3), 0.1),
-		anim8.newAnimation(grid(lines, column + 2), 0.1),
-	}
-end
 
 function initializePlayer(map, world, spawn)
     
 	local layer = map:addCustomLayer("Joueur", 3)
 
      -- Objet du joueur
-	local character = 4
-    local sprite = love.graphics.newImage("pixmaps/Characters.png")
-	local grid = anim8.newGrid(26, 36, sprite:getWidth(), sprite:getHeight())
-	
     local player = {
 		world = world,
-        character = character,
-        sprite = sprite,
-		grid = grid,
+        character = 4,
+        sprite = charactersSprite,
+		grid = charactersGrid,
+		animations = characterAnimations(4),
 		direction = 1,
 		dx = 1,
 		dy = 0,
@@ -57,9 +28,7 @@ function initializePlayer(map, world, spawn)
 		max_healthpoints = 5,
     }
 	layer.player = player
-
-    updatePlayerAnimations(player)
-     
+    
     layer.boomerang = createBoomerang(world, player)
 
     layer.update = playerUpdate

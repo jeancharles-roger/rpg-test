@@ -1,4 +1,3 @@
-local anim8 = require 'libraries.anim8'
 
 function initializeNpcs(map, world, npcs, player)
     local layer = map:addCustomLayer("PNJs", 2)

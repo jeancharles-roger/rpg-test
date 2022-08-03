@@ -1,4 +1,3 @@
-local anim8 = require 'libraries.anim8'
 
 function throwBoomerang(boomerang)
     if boomerang.thrown == nil then
