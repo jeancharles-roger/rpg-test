@@ -4,37 +4,31 @@ function initializeNpcs(map, world, npcs, player)
     layer.map = map
     layer.player = player
     layer.npcs = npcs
-    layer.animations = {}
-
-    layer.sprite = love.graphics.newImage("pixmaps/orc.png")
-	local grid = anim8.newGrid(30, 40, layer.sprite:getWidth(), layer.sprite:getHeight())
-    -- TODO use a loop to construct animations
-    layer.animations["Orc"] = {
-		anim8.newAnimation(grid("1-3", 1), 0.1),
-        anim8.newAnimation(grid("1-3", 2), 0.1),
-		anim8.newAnimation(grid("1-3", 3), 0.1),
-		anim8.newAnimation(grid("1-3", 4), 0.1),
-	}
+    -- layer.animations = {}
 
     -- Ajoute les npcs dans world pour les collisions
-    for name, enemy in pairs(layer.npcs) do
-        -- On peut le tuer
-        enemy.killable = true
-        enemy.dangerous = true
+    for name, npc in pairs(layer.npcs) do
+        
+        local characterInfo = charactersInfos[npc.class]
 
-        if enemy.class == "Orc" then
-            enemy.width = 30
-            enemy.height = 40
-            enemy.healthpoints = 2
-            enemy.max_healthpoints = 2
+        if characterInfo then
+            npc.width = characterInfo.width
+            npc.height = characterInfo.height
+            npc.healthpoints = characterInfo.max_healthpoints
+            npc.max_healthpoints = characterInfo.max_healthpoints
+            npc.killable = characterInfo.killable or false
+            npc.dangerous = characterInfo.dangerous or false
+
+            npc.sprite = characterInfo.sprite
+            npc.animations = characterAnimations(characterInfo)
         else
-            enemy.width = 20
-            enemy.height = 30
-            enemy.healthpoints = 1
-            enemy.max_healthpoints = 1
+            npc.width = 20
+            npc.height = 30
         end
 
-        world:add(enemy, enemy.x, enemy.y, enemy.width, enemy.height)
+        npc.moving = false
+
+        world:add(npc, npc.x, npc.y, npc.width, npc.height)
     end
 
     layer.update = updateNpcs
@@ -43,49 +37,50 @@ function initializeNpcs(map, world, npcs, player)
 end
 
 function updateNpcs(self, dt)
-    for name, animations in pairs(self.animations) do
-        for index, animation in pairs(animations) do
-            animation:update(dt)
-        end
-    end
 
     local scale = self.map.scale or 1
     local maxWidth = love.graphics.getWidth() / 1.70 / scale
     local maxHeight = love.graphics.getHeight() / 1.60 / scale
 
-    for name, enemy in pairs(self.npcs) do
-        -- ressucite les énemis mort si ils sont loin du joueur
-        if enemy.healthpoints < enemy.max_healthpoints then 
-            local dx = math.abs(enemy.x - self.player.x)
-            local dy = math.abs(enemy.y - self.player.y)
+    for name, npc in pairs(self.npcs) do
+
+        if npc.moving and npc.animations then
+            for index, animation in pairs(npc.animations) do
+                animation:update(dt)
+            end
+        end
+
+        -- ressucite les enemis mort si ils sont loin du joueur
+        if npc.healthpoints ~= nil and npc.healthpoints < npc.max_healthpoints then 
+            local dx = math.abs(npc.x - self.player.x)
+            local dy = math.abs(npc.y - self.player.y)
             if dx > maxWidth or dy > maxHeight then
-                enemy.healthpoints = enemy.max_healthpoints
+                npc.healthpoints = npc.max_healthpoints
             end
         end
     end
 end
 
 function drawNpcs(self)
-    for name, enemy in pairs(self.npcs) do
-        if enemy.healthpoints > 0 then 
-            local animation = self.animations[enemy.class]
-            if animation ~= nil then 
-                animation[1]:draw(
-                    self.sprite, 
-                    math.floor(enemy.x),
-                    math.floor(enemy.y),
+    for name, npc in pairs(self.npcs) do
+        if npc.healthpoints == nil or npc.healthpoints > 0 then 
+            if npc.animations ~= nil then 
+                npc.animations[1]:draw(
+                    npc.sprite, 
+                    math.floor(npc.x),
+                    math.floor(npc.y),
                     0,
                     1,
                     1,
-                    enemy.ox,
-                    enemy.oy
+                    npc.ox,
+                    npc.oy
                 )
 
                 -- Hitbox
                 --love.graphics.rectangle("line", enemy.x, enemy.y, enemy.width, enemy.height)
 
             else
-                love.graphics.print(name, enemy.x, enemy.y)
+                love.graphics.print(name, npc.x, npc.y)
             end
         end
     end

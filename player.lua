@@ -6,12 +6,14 @@ function initializePlayer(map, world, spawn)
 	local layer = map:addCustomLayer("Joueur", 3)
 
     -- Objet du joueur
-	local character = "Boy"
+	local characterId = "Boy"
+	local characterInfo = charactersInfos[characterId]
+
     local player = {
 		world = world,
-        character = character,
-        sprite = charactersSprite,
-		animations = characterAnimations(character),
+        id = characterId,
+        sprite = characterInfo.sprite,
+		animations = characterAnimations(characterInfo),
 		direction = 1,
 		dx = 1,
 		dy = 0,
@@ -153,7 +155,6 @@ function playerUpdate(self, dt)
 			end
 		end
 	end
-
 
 	updateBoomerang(self.boomerang, dt)
 
