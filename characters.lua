@@ -3,7 +3,7 @@
 local charactersSprite = love.graphics.newImage("pixmaps/Characters.png")
 local charactersGrid = anim8.newGrid(26, 36, charactersSprite:getWidth(), charactersSprite:getHeight())
 
-local orcSprite = love.graphics.newImage("pixmaps/orc.png")
+local orcSprite = love.graphics.newImage("pixmaps/Orc.png")
 local orcGrid = anim8.newGrid(30, 40, orcSprite:getWidth(), orcSprite:getHeight())
 
 charactersInfos = {
