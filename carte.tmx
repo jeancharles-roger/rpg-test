@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="195">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="199">
  <editorsettings>
   <export target="carte.lua" format="lua"/>
  </editorsettings>
@@ -1227,7 +1227,7 @@
   <object id="166" name="dede" class="Goblin" x="820.537" y="740.056" width="22.2017" height="37.9278"/>
   <object id="167" name="luca" class="Goblin" x="617.946" y="481.961" width="26.827" height="41.6281"/>
   <object id="169" name="Roi goblin" class="Goblin" x="-172.485" y="1863.05" width="27.0158" height="39.4846"/>
-  <object id="179" name="biarr" class="Goblin" x="547.521" y="-1138.95" width="25.8264" height="38.7397"/>
+  <object id="179" name="biarr" class="Orc" x="547.521" y="-1159.76" width="25.8264" height="38.7397"/>
   <object id="180" name="kalos" class="Orc" x="209.194" y="-1293.9" width="25.8264" height="36.157"/>
   <object id="181" name="sese" class="Orc" x="227.374" y="1556.11" width="18.0213" height="41.4489"/>
   <object id="182" name="zeze" class="Orc" x="216.046" y="1674.9" width="19.8234" height="55.8659"/>
@@ -1235,9 +1235,13 @@
   <object id="184" name="ratata" class="Orc" x="655.048" y="1152.43" width="25.2298" height="66.6787"/>
   <object id="186" name="Garde2" class="Orc" x="682.604" y="-1305.07" width="36.0848" height="69.1625"/>
   <object id="187" name="Garde3" class="Orc" x="491.655" y="-1308.07" width="42.0989" height="72.1696"/>
-  <object id="188" name="Roi" class="Orc" x="571.343" y="-1347.17" width="69.1625" height="34.5813"/>
+  <object id="188" name="Roi Orc" class="Orc" x="571.343" y="-1347.17" width="69.1625" height="34.5813"/>
   <object id="189" name="troli" class="Orc" x="620.959" y="-1174.26" width="34.5813" height="70.6661"/>
-  <object id="190" name="Garde1" class="Orc" x="849.496" y="-1326.12" width="36.0848" height="52.6237"/>
+  <object id="190" name="Garde1" class="Orc" x="576.522" y="-1067.55" width="36.0848" height="52.6237"/>
+  <object id="195" name="Garde4" class="Orc" x="575.568" y="-1260.01" width="43.2277" height="28.0179"/>
+  <object id="196" name="Garde" class="Goblin" x="-58.9926" y="1380.28" width="21.9331" height="33.2779"/>
+  <object id="197" name="Garde" class="Goblin" x="-378.914" y="1388.59" width="23.4458" height="24.2021"/>
+  <object id="198" name="Garde" class="Orc" x="421.268" y="-391.771" width="29.4963" height="44.6226"/>
  </objectgroup>
  <objectgroup id="4" name="Trous">
   <properties>
