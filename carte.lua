@@ -1462,7 +1462,7 @@ return {
         {
           id = 101,
           name = "Totor Jr",
-          class = "Orc",
+          class = "Goblin",
           shape = "rectangle",
           x = 332.624,
           y = 559.89,

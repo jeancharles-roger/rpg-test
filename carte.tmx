@@ -1138,7 +1138,7 @@
   <object id="1" name="Argoz" class="Orc" x="78.3594" y="-353.669" width="11.4903" height="11.2211"/>
   <object id="99" name="Joueur" class="Joueur" x="-63" y="56" width="16" height="24"/>
   <object id="100" name="Totor" class="Orc" x="42" y="34" width="24" height="40"/>
-  <object id="101" name="Totor Jr" class="Orc" x="332.624" y="559.89" width="11.4903" height="11.2211"/>
+  <object id="101" name="Totor Jr" class="Goblin" x="332.624" y="559.89" width="11.4903" height="11.2211"/>
   <object id="102" name="Maire" class="Eagle" x="-222.409" y="18.1844" width="37.7675" height="47.5591"/>
   <object id="103" x="-159.463" y="4.89579"/>
   <object id="105" name="Nage" class="Green" x="-262.71" y="199.423" width="37.7675" height="47.5591"/>

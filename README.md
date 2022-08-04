@@ -13,6 +13,7 @@
 - `Yellow` ![Yellow](doc/Yellow.png)
 - `Green` ![Green](doc/Green.png)
 - `Orc` ![Orc](doc/Orc.png)
+- `Goblin` ![Goblin](doc/Goblin.png)
 
 **Directions:**
 
