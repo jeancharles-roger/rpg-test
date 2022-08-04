@@ -1233,10 +1233,10 @@
   <object id="182" name="zeze" class="Orc" x="216.046" y="1674.9" width="19.8234" height="55.8659"/>
   <object id="183" name="crôm" class="Orc" x="248.021" y="1399.32" width="19.8234" height="81.0957"/>
   <object id="184" name="ratata" class="Orc" x="655.048" y="1152.43" width="25.2298" height="66.6787"/>
-  <object id="186" x="682.604" y="-1305.07" width="36.0848" height="69.1625"/>
-  <object id="187" x="491.655" y="-1308.07" width="42.0989" height="72.1696"/>
-  <object id="188" x="571.343" y="-1347.17" width="69.1625" height="34.5813"/>
-  <object id="189" x="620.959" y="-1174.26" width="34.5813" height="70.6661"/>
+  <object id="186" name="Garde2" class="Orc" x="682.604" y="-1305.07" width="36.0848" height="69.1625"/>
+  <object id="187" name="Garde3" class="Orc" x="491.655" y="-1308.07" width="42.0989" height="72.1696"/>
+  <object id="188" name="Roi" class="Orc" x="571.343" y="-1347.17" width="69.1625" height="34.5813"/>
+  <object id="189" name="troli" class="Orc" x="620.959" y="-1174.26" width="34.5813" height="70.6661"/>
   <object id="190" name="Garde1" class="Orc" x="849.496" y="-1326.12" width="36.0848" height="52.6237"/>
  </objectgroup>
  <objectgroup id="4" name="Trous">

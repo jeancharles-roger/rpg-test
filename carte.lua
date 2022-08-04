@@ -2270,8 +2270,8 @@ return {
         },
         {
           id = 186,
-          name = "",
-          class = "",
+          name = "Garde2",
+          class = "Orc",
           shape = "rectangle",
           x = 682.604,
           y = -1305.07,
@@ -2283,8 +2283,8 @@ return {
         },
         {
           id = 187,
-          name = "",
-          class = "",
+          name = "Garde3",
+          class = "Orc",
           shape = "rectangle",
           x = 491.655,
           y = -1308.07,
@@ -2296,8 +2296,8 @@ return {
         },
         {
           id = 188,
-          name = "",
-          class = "",
+          name = "Roi",
+          class = "Orc",
           shape = "rectangle",
           x = 571.343,
           y = -1347.17,
@@ -2309,8 +2309,8 @@ return {
         },
         {
           id = 189,
-          name = "",
-          class = "",
+          name = "troli",
+          class = "Orc",
           shape = "rectangle",
           x = 620.959,
           y = -1174.26,
