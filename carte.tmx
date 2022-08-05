@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="199">
+<map version="1.9" tiledversion="1.9.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="235">
  <editorsettings>
   <export target="carte.lua" format="lua"/>
  </editorsettings>
@@ -683,8 +683,8 @@
 92,62,0,29,158,0,479,0,0,0,0,0,0,0,0,0,
 62,0,29,158,0,0,0,0,633,634,0,638,0,0,0,0,
 0,29,158,0,637,0,0,0,665,666,0,0,0,0,0,0,
-29,158,0,0,669,0,0,0,0,0,0,0,0,0,0,0,
-126,603,0,0,0,0,0,0,0,0,0,0,639,0,0,0,
+29,158,0,0,669,0,0,0,0,0,0,635,636,0,633,634,
+126,603,0,0,0,0,0,0,0,0,0,667,668,0,665,666,
 221,221,0,0,0,0,0,0,0,0,221,221,348,349,251,0,
 0,0,0,0,0,0,0,0,0,283,348,349,380,381,0,0,
 93,94,283,283,0,0,0,249,348,349,380,381,0,0,0,0,
@@ -1221,7 +1221,7 @@
   <object id="159" name="Villagois 2" class="Goblin" x="-195.19" y="1665.12" width="23.1267" height="31.4524"/>
   <object id="160" name="Villagois 3" class="Goblin" x="-141.536" y="1667.9" width="24.0518" height="27.7521"/>
   <object id="161" name="Villagois 4" class="Goblin" x="-88.8067" y="1664.2" width="24.0518" height="29.6022"/>
-  <object id="162" name="Garde 3" class="Orc" x="-166.079" y="1755.44" width="29.6022" height="38.8529" rotation="1.05022"/>
+  <object id="162" name="Garde 3" class="Goblin" x="-166.079" y="1755.44" width="29.6022" height="38.8529" rotation="1.05022"/>
   <object id="163" name="Garde 2" class="Goblin" x="-95.2821" y="1759.48" width="31.4524" height="32.3774"/>
   <object id="164" name="garde 1" class="Goblin" x="-255.319" y="1758.56" width="31.4524" height="35.1526"/>
   <object id="166" name="dede" class="Goblin" x="820.537" y="740.056" width="22.2017" height="37.9278"/>
@@ -1239,9 +1239,24 @@
   <object id="189" name="troli" class="Orc" x="620.959" y="-1174.26" width="34.5813" height="70.6661"/>
   <object id="190" name="Garde1" class="Orc" x="576.522" y="-1067.55" width="36.0848" height="52.6237"/>
   <object id="195" name="Garde4" class="Orc" x="575.568" y="-1260.01" width="43.2277" height="28.0179"/>
-  <object id="196" name="Garde" class="Goblin" x="-58.9926" y="1380.28" width="21.9331" height="33.2779"/>
-  <object id="197" name="Garde" class="Goblin" x="-378.914" y="1388.59" width="23.4458" height="24.2021"/>
+  <object id="196" name="kukukukuk" class="Goblin" x="-58.9926" y="1380.28" width="21.9331" height="33.2779"/>
+  <object id="197" name="lililillililli" class="Goblin" x="-378.914" y="1388.59" width="23.4458" height="24.2021"/>
   <object id="198" name="Garde" class="Orc" x="421.268" y="-391.771" width="29.4963" height="44.6226"/>
+  <object id="218" name="ferdklos" class="Goblin" x="-367.098" y="1172.22" width="32.3544" height="29.8656"/>
+  <object id="219" name="gekke" class="Goblin" x="-113.24" y="1164.76" width="42.3096" height="46.0428"/>
+  <object id="220" name="yassm" class="Goblin" x="-263.813" y="1010.45" width="39.8208" height="43.554"/>
+  <object id="221" name="gakluslozda" class="Goblin" x="-246.391" y="1263.07" width="38.5764" height="23.6436" rotation="90"/>
+  <object id="222" x="54.7536" y="1246.89" width="21.1548" height="39.8208"/>
+  <object id="223" name="bros" class="Goblin" x="-133.151" y="1402.44" width="28.6212" height="42.3096"/>
+  <object id="224" name="jaklaus" class="Goblin" x="-265.057" y="1375.06" width="12.444" height="43.554"/>
+  <object id="225" name="usslu" class="Goblin" x="-474.116" y="1199.6" width="32.3544" height="68.442"/>
+  <object id="226" name="joiz" class="Goblin" x="-441.762" y="1050.27" width="29.8656" height="43.554"/>
+  <object id="227" name="hylus" class="Goblin" x="-396.964" y="912.145" width="23.6436" height="62.22"/>
+  <object id="228" name="kolussz" class="Goblin" x="-340.966" y="914.634" width="27.3768" height="55.998"/>
+  <object id="230" name="hojli" class="Orc" x="470.383" y="-1187.16" width="41.0652" height="82.1304"/>
+  <object id="231" name="dinnus" class="Orc" x="740.418" y="-1205.82" width="41.0652" height="63.4644"/>
+  <object id="232" name="arrdosl" class="Orc" x="480.338" y="-976.854" width="80.886" height="33.5988"/>
+  <object id="233" name="hutilo" class="Orc" x="666.999" y="-1024.14" width="23.6436" height="64.7088"/>
  </objectgroup>
  <objectgroup id="4" name="Trous">
   <properties>
@@ -1357,5 +1372,7 @@
   <object id="192" x="706.052" y="1525.78" width="377.842" height="99.2635"/>
   <object id="193" x="712.456" y="1652.26" width="372.238" height="100.865"/>
   <object id="194" x="705.251" y="1779.54" width="381.044" height="100.865"/>
+  <object id="199" x="454.206" y="-367.098" width="53.5092" height="43.554"/>
+  <object id="200" x="350.921" y="-368.342" width="60.9756" height="47.2872"/>
  </objectgroup>
 </map>
