@@ -35,15 +35,15 @@
             "scaleInEditor": 1
         },
         "carte.tmx": {
-            "scale": 3.3358,
-            "selectedLayer": 3,
+            "scale": 0.3552,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 511.7213262185983,
-                "y": 0.14988908207928375
+                "x": 401.1824324324324,
+                "y": 613.7387387387387
             }
         },
         "carte.tmx#terrain": {
-            "scaleInDock": 1.2343
+            "scaleInDock": 0.986
         },
         "world.tmx": {
             "expandedObjectLayers": [
